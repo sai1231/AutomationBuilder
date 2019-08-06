@@ -38,6 +38,31 @@ $(document).ready(function () {
   let step = {};
 
 
+    $(".btn").mouseenter(function(){
+      this.timer=window.setTimeout(function() {
+            console.log("asdfjahsdfjkls");
+            $.post("https://jsonplaceholder.typicode.com/posts",
+            {
+              userId:"500",
+              title:"sldfgswfljglsdjfl",
+              completed:"false"
+              },
+            function(data,status){
+              alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+            });
+       }, 2000);
+    });
+    
+     $(".btn").mouseleave(function() {
+      if(this.timer)window.clearTimeout(this.timer);
+     });
+
+     
+
+
+  
+
+
   $(document).delegate("button, a", "click", function () {
     step = Object.create(null)
     let element = $(this);
